@@ -9,7 +9,6 @@ const InputSlice = createSlice({
     addListBtn: true,
     listId: null,
     readyToAdd: false,
-    // listEmpty: true,
     check: false,
   },
   reducers: {
@@ -28,7 +27,6 @@ const InputSlice = createSlice({
           if (i.id === listId) {
             i.title = title;
             i.desc = desc;
-            // i.liveTime = action.payload.liveTime;
             state.title = "";
             state.desc = "";
             state.addListBtn = true;
@@ -43,13 +41,6 @@ const InputSlice = createSlice({
         state.desc = "";
         state.readyToAdd = false;
       }
-      //adding List
-      // return {
-      //   ...state,
-      //   list: list.push({ id: nanoid(), title, desc }),
-      //   title: "",
-      //   desc: "",
-      // };
     },
     removeHandle(state, action) {
       state.list = state.list.filter((i) => {
@@ -60,14 +51,6 @@ const InputSlice = createSlice({
       state.list = [];
     },
     editHandle(state, action) {
-      // state.addListBtn = false;
-      // const li = state.list.find((i) => {
-      //   return i.id === action.payload;
-      // });
-      // state.title = li.title;
-      // state.desc = li.desc;
-      // state.listId = action.payload;
-
       state.list.map((i) => {
         if (i.id === action.payload) {
           state.addListBtn = false;
@@ -80,20 +63,9 @@ const InputSlice = createSlice({
       console.log(state.addListBtn);
     },
 
-    doneHandle(state, action) {
+    doneHandle(state) {
       const { check } = state;
       state.check = !check;
-      // state.list.map((i) => {
-      //   if (i.id === action.payload.id) {
-      //     let { title } = i;
-      //     console.log("hh");
-      //     title.Style.color = "yellow";
-      //   }
-      //   return i;
-      // });
-      // const { txtStyle } = state;
-      // state.txtStyle = !txtStyle;
-      // console.log(txtStyle);
     },
   },
 });
